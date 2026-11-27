@@ -1,0 +1,24 @@
+{
+  "nodes": [
+    {"id": "source", "balance": 6},
+    {"id": "city", "balance": -6}
+  ],
+  "edges": [
+    {
+      "id": "line_a",
+      "source": "source",
+      "target": "city",
+      "capacity": 5,
+      "unit_cost": 1,
+      "lower_capacity": 0
+    },
+    {
+      "id": "line_b",
+      "source": "source",
+      "target": "city",
+      "capacity": 5,
+      "unit_cost": 4,
+      "lower_capacity": 0
+    }
+  ]
+}

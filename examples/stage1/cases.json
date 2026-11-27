@@ -1,0 +1,46 @@
+{
+  "stage": 1,
+  "description": "Validate and evaluate supplied candidate flows; no flow is searched for.",
+  "cases": [
+    {
+      "name": "two-link primary candidate",
+      "network": "two_link_network.json",
+      "flow": "flow_optimal.json",
+      "expected_status": "feasible",
+      "expected_cost": 9,
+      "explanation": "Six units are delivered as line_a=5 and line_b=1, so cost = 5*1 + 1*4 = 9."
+    },
+    {
+      "name": "two-link feasible nonoptimal candidate",
+      "network": "two_link_network.json",
+      "flow": "flow_feasible_nonoptimal.json",
+      "expected_status": "feasible",
+      "expected_cost": 15,
+      "explanation": "The candidate line_a=3 and line_b=3 meets every constraint, so it is accepted even though its cost is higher."
+    },
+    {
+      "name": "two-link over-capacity candidate",
+      "network": "two_link_network.json",
+      "flow": "flow_over_capacity.json",
+      "expected_status": "rejected",
+      "expected_error": "exceeds capacity",
+      "explanation": "line_a carries 6 units but its capacity is 5."
+    },
+    {
+      "name": "two-link under-delivery candidate",
+      "network": "two_link_network.json",
+      "flow": "flow_under_delivery.json",
+      "expected_status": "rejected",
+      "expected_error": "expected net outflow",
+      "explanation": "Only 5 of the required 6 units leave the source, so node balances are violated."
+    },
+    {
+      "name": "transit-node candidate",
+      "network": "transit_network.json",
+      "flow": "transit_flow.json",
+      "expected_status": "feasible",
+      "expected_cost": 20,
+      "explanation": "Four units pass through the junction; its inflow and outflow cancel, and cost = 4*2 + 4*3 = 20."
+    }
+  ]
+}

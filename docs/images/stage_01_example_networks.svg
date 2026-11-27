@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title description">
+  <title id="title">Stage 1 example flow networks</title>
+  <desc id="description">The two-link fixture routes six units from source to city over two parallel edges, while the transit fixture routes four units through a zero-balance junction.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/>
+    </marker>
+    <style>
+      .title { font: 700 30px system-ui, sans-serif; fill: #172033; }
+      .panel-title { font: 700 21px system-ui, sans-serif; fill: #172033; }
+      .subtitle { font: 400 14px system-ui, sans-serif; fill: #536076; }
+      .node-name { font: 700 16px system-ui, sans-serif; fill: #172033; text-anchor: middle; }
+      .node-balance { font: 500 14px system-ui, sans-serif; fill: #364258; text-anchor: middle; }
+      .edge-name { font: 700 14px system-ui, sans-serif; fill: #1e40af; text-anchor: middle; }
+      .edge-data { font: 400 13px system-ui, sans-serif; fill: #364258; text-anchor: middle; }
+      .summary { font: 700 16px system-ui, sans-serif; fill: #172033; }
+      .candidate-title { font: 700 13px system-ui, sans-serif; fill: #172033; }
+      .candidate-data { font: 400 12px system-ui, sans-serif; fill: #536076; }
+      .status-ok { font: 700 12px system-ui, sans-serif; fill: #137333; }
+      .status-error { font: 700 12px system-ui, sans-serif; fill: #b42318; }
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; }
+      .candidate { fill: #f8fafc; stroke: #dbe3ee; stroke-width: 1.5; }
+      .edge { fill: none; stroke: #2563eb; stroke-width: 3; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="#f4f7fb"/>
+  <text x="50" y="52" class="title">Stage 1 example networks</text>
+  <text x="50" y="78" class="subtitle">Positive balance supplies flow; negative balance consumes flow; each edge label shows candidate flow, capacity, and unit cost.</text>
+
+  <rect x="40" y="105" width="530" height="570" rx="16" class="panel"/>
+  <text x="65" y="142" class="panel-title">Two parallel links</text>
+  <text x="65" y="166" class="subtitle">two_link_network.json + flow_optimal.json</text>
+
+  <circle cx="155" cy="285" r="54" fill="#e7f6ec" stroke="#2f855a" stroke-width="3"/>
+  <text x="155" y="281" class="node-name">source</text>
+  <text x="155" y="304" class="node-balance">balance +6</text>
+
+  <circle cx="455" cy="285" r="54" fill="#fff1e7" stroke="#c05621" stroke-width="3"/>
+  <text x="455" y="281" class="node-name">city</text>
+  <text x="455" y="304" class="node-balance">balance −6</text>
+
+  <path d="M207,269 C270,183 340,183 403,269" class="edge"/>
+  <text x="305" y="202" class="edge-name">line_a</text>
+  <text x="305" y="222" class="edge-data">flow 5 / capacity 5 / cost 1</text>
+
+  <path d="M207,301 C270,387 340,387 403,301" class="edge"/>
+  <text x="305" y="372" class="edge-name">line_b</text>
+  <text x="305" y="392" class="edge-data">flow 1 / capacity 5 / cost 4</text>
+
+  <rect x="65" y="420" width="480" height="48" rx="8" fill="#edf7ef" stroke="#b8dbc1"/>
+  <text x="82" y="449" class="summary">Feasible candidate cost: 5×1 + 1×4 = 9</text>
+
+  <text x="65" y="500" class="candidate-title">Other supplied candidates</text>
+  <rect x="65" y="515" width="150" height="125" rx="8" class="candidate"/>
+  <text x="78" y="539" class="candidate-title">Feasible nonoptimal</text>
+  <text x="78" y="562" class="candidate-data">line_a 3, line_b 3</text>
+  <text x="78" y="584" class="candidate-data">cost 15</text>
+  <text x="78" y="615" class="status-ok">FEASIBLE</text>
+
+  <rect x="230" y="515" width="150" height="125" rx="8" class="candidate"/>
+  <text x="243" y="539" class="candidate-title">Over capacity</text>
+  <text x="243" y="562" class="candidate-data">line_a 6, line_b 0</text>
+  <text x="243" y="584" class="candidate-data">6 exceeds capacity 5</text>
+  <text x="243" y="615" class="status-error">REJECTED</text>
+
+  <rect x="395" y="515" width="150" height="125" rx="8" class="candidate"/>
+  <text x="408" y="539" class="candidate-title">Under delivery</text>
+  <text x="408" y="562" class="candidate-data">line_a 5, line_b 0</text>
+  <text x="408" y="584" class="candidate-data">net outflow is 5</text>
+  <text x="408" y="615" class="status-error">REJECTED</text>
+
+  <rect x="600" y="105" width="560" height="570" rx="16" class="panel"/>
+  <text x="625" y="142" class="panel-title">Transit node</text>
+  <text x="625" y="166" class="subtitle">transit_network.json + transit_flow.json</text>
+
+  <circle cx="690" cy="285" r="50" fill="#e7f6ec" stroke="#2f855a" stroke-width="3"/>
+  <text x="690" y="281" class="node-name">source</text>
+  <text x="690" y="304" class="node-balance">balance +4</text>
+
+  <circle cx="880" cy="285" r="50" fill="#eaf2ff" stroke="#2563eb" stroke-width="3"/>
+  <text x="880" y="281" class="node-name">junction</text>
+  <text x="880" y="304" class="node-balance">balance 0</text>
+
+  <circle cx="1070" cy="285" r="50" fill="#fff1e7" stroke="#c05621" stroke-width="3"/>
+  <text x="1070" y="281" class="node-name">city</text>
+  <text x="1070" y="304" class="node-balance">balance −4</text>
+
+  <path d="M740,285 L830,285" class="edge"/>
+  <text x="785" y="222" class="edge-name">source_to_junction</text>
+  <text x="785" y="243" class="edge-data">flow 4</text>
+  <text x="785" y="334" class="edge-data">capacity 4 / cost 2</text>
+
+  <path d="M930,285 L1020,285" class="edge"/>
+  <text x="975" y="222" class="edge-name">junction_to_city</text>
+  <text x="975" y="243" class="edge-data">flow 4</text>
+  <text x="975" y="334" class="edge-data">capacity 4 / cost 3</text>
+
+  <rect x="625" y="420" width="510" height="48" rx="8" fill="#edf7ef" stroke="#b8dbc1"/>
+  <text x="642" y="449" class="summary">Feasible candidate cost: 4×2 + 4×3 = 20</text>
+
+  <rect x="625" y="500" width="510" height="140" rx="10" class="candidate"/>
+  <text x="650" y="531" class="candidate-title">Conservation at the junction</text>
+  <text x="650" y="559" class="candidate-data">inflow 4, outflow 4 → net outflow 0</text>
+  <text x="650" y="587" class="candidate-data">Required delivery is 4; summing both edge flows would incorrectly give 8.</text>
+  <text x="650" y="615" class="status-ok">FEASIBLE</text>
+</svg>

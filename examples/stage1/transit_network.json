@@ -1,0 +1,23 @@
+{
+  "nodes": [
+    {"id": "source", "balance": 4},
+    {"id": "junction", "balance": 0},
+    {"id": "city", "balance": -4}
+  ],
+  "edges": [
+    {
+      "id": "source_to_junction",
+      "source": "source",
+      "target": "junction",
+      "capacity": 4,
+      "unit_cost": 2
+    },
+    {
+      "id": "junction_to_city",
+      "source": "junction",
+      "target": "city",
+      "capacity": 4,
+      "unit_cost": 3
+    }
+  ]
+}
