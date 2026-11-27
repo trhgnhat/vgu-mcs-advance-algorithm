@@ -1,0 +1,15 @@
+{
+  "nodes": [
+    {"id": "s", "balance": 0},
+    {"id": "a", "balance": 0},
+    {"id": "b", "balance": 0},
+    {"id": "t", "balance": 0}
+  ],
+  "edges": [
+    {"id": "sa", "source": "s", "target": "a", "capacity": 1, "unit_cost": 0},
+    {"id": "ab", "source": "a", "target": "b", "capacity": 1, "unit_cost": 0},
+    {"id": "bt", "source": "b", "target": "t", "capacity": 1, "unit_cost": 0},
+    {"id": "sb", "source": "s", "target": "b", "capacity": 1, "unit_cost": 0},
+    {"id": "at", "source": "a", "target": "t", "capacity": 1, "unit_cost": 0}
+  ]
+}

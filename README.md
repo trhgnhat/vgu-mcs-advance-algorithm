@@ -6,14 +6,17 @@ Build a regional microgrid routing model that meets electricity demand at minimu
 
 ## Status
 
-Stage 1 is implemented: the package loads and validates fixed-balance flow
-networks, validates a caller-supplied candidate flow, and evaluates its cost.
-It does not search for a feasible or optimal flow.
+Stages 1 and 2 are implemented. Stage 1 validates and evaluates a supplied
+fixed-balance flow. Stage 2 finds maximum flow with Ford-Fulkerson or
+Edmonds-Karp and returns an equal-capacity cut certificate. Neither stage
+optimizes routing cost.
 
 ## Project Documentation
 
 - [Stage 00: Repository Foundation and Agent Guardrails](docs/stage_00_repository_foundation.md)
 - [Stage 01: Problem Definition and Validation](docs/stage_01_problem_definition.md)
+- [Stage 02: Maximum-Flow Foundations](docs/stage_02_maximum_flow_foundations.md)
+- [Stage 02 Proof Notes](docs/stage_02_proof_notes.md)
 
 ## Development Roadmap
 
@@ -73,8 +76,8 @@ python -m pip install -e .
 python -m pip install -r requirements-dev.txt
 ```
 
-Stage 1 runtime code uses only the Python standard library. The development
-requirements install `pytest`.
+Stage 1 and Stage 2 runtime code use only the Python standard library. The
+development requirements install `pytest`.
 
 ## Stage 1 Usage
 
@@ -105,6 +108,28 @@ normal concept demonstration. Run all verification tests with:
 ```bash
 python -m pytest -q
 ```
+
+## Stage 2 Usage
+
+Run all Stage 2 fixtures with both algorithms:
+
+```bash
+python examples/stage2/run_cases.py
+```
+
+Run one solver and inspect its flow/cut certificate:
+
+```bash
+python -m renewable_routing.stage2 \
+  examples/stage2/rerouting.json \
+  --source s \
+  --sink t \
+  --algorithm ford-fulkerson
+```
+
+Use `--algorithm edmonds-karp` for BFS path selection. Stage 2 starts from zero
+flow and supports only zero node balances, zero lower capacities, and zero
+costs. It rejects unsupported fields instead of ignoring them.
 
 ## Study Materials
 

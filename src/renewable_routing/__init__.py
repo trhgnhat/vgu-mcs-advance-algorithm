@@ -1,1 +1,1 @@
-"""Renewable-energy routing models and candidate-flow validation."""
+"""Renewable-energy flow validation and educational routing algorithms."""

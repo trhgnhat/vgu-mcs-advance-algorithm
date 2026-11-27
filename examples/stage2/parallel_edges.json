@@ -1,0 +1,10 @@
+{
+  "nodes": [
+    {"id": "s", "balance": 0},
+    {"id": "t", "balance": 0}
+  ],
+  "edges": [
+    {"id": "line_a", "source": "s", "target": "t", "capacity": 5, "unit_cost": 0},
+    {"id": "line_b", "source": "s", "target": "t", "capacity": 5, "unit_cost": 0}
+  ]
+}

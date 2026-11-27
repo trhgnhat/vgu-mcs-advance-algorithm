@@ -1,0 +1,21 @@
+{
+  "nodes": [
+    {"id": "s", "balance": 0},
+    {"id": "v1", "balance": 0},
+    {"id": "v2", "balance": 0},
+    {"id": "v3", "balance": 0},
+    {"id": "v4", "balance": 0},
+    {"id": "t", "balance": 0}
+  ],
+  "edges": [
+    {"id": "sv1", "source": "s", "target": "v1", "capacity": 16, "unit_cost": 0},
+    {"id": "sv2", "source": "s", "target": "v2", "capacity": 13, "unit_cost": 0},
+    {"id": "v2v1", "source": "v2", "target": "v1", "capacity": 4, "unit_cost": 0},
+    {"id": "v1v3", "source": "v1", "target": "v3", "capacity": 12, "unit_cost": 0},
+    {"id": "v3v2", "source": "v3", "target": "v2", "capacity": 9, "unit_cost": 0},
+    {"id": "v2v4", "source": "v2", "target": "v4", "capacity": 14, "unit_cost": 0},
+    {"id": "v4v3", "source": "v4", "target": "v3", "capacity": 7, "unit_cost": 0},
+    {"id": "v3t", "source": "v3", "target": "t", "capacity": 20, "unit_cost": 0},
+    {"id": "v4t", "source": "v4", "target": "t", "capacity": 4, "unit_cost": 0}
+  ]
+}
