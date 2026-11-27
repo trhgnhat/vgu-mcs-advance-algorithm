@@ -11,37 +11,30 @@ fixed-balance flow. Stage 2 finds maximum flow with Ford-Fulkerson or
 Edmonds-Karp and returns an equal-capacity cut certificate. Neither stage
 optimizes routing cost.
 
-## Project Documentation
+## Stage Table of Contents
 
-- [Stage 00: Repository Foundation and Agent Guardrails](docs/stage_00_repository_foundation.md)
-- [Stage 01: Problem Definition and Validation](docs/stage_01_problem_definition.md)
-- [Stage 02: Maximum-Flow Foundations](docs/stage_02_maximum_flow_foundations.md)
-- [Stage 02 Proof Notes](docs/stage_02_proof_notes.md)
+| Stage | Topic | Status |
+|---|---|---|
+| 00 | [Repository Foundation and Agent Guardrails](docs/stage_00_repository_foundation.md) | ✅ Finished |
+| 01 | [Problem Definition and Validation](docs/stage_01_problem_definition.md) | ✅ Finished |
+| 02 | [Maximum-Flow Foundations](docs/stage_02_maximum_flow_foundations.md) ([proof notes](docs/stage_02_proof_notes.md)) | ✅ Finished |
+| 03 | First Classical Minimum-Cost-Flow Solver (Successive Shortest Paths) | (pending) |
+| 04 | Second Classical Minimum-Cost-Flow Solver | (pending) |
+| 05 | Simplified Minimum-Ratio-Cycle Method | (pending) |
+| 06 | Paper 1 Proof Outline and Engine Checkpoint | (pending) |
+| 07 | Solver Benchmarking and Scaling | (pending) |
+| 08 | GIS Data and Regional Microgrid Model | (pending) |
+| 09 | PostGIS Spatial Indexing and Baseline Comparison | (pending) |
+| 10 | Geospatial Representation and Demand/Capacity Estimation | (pending) |
+| 11 | Integrated Optimizer and Outage Rerouting | (pending) |
+| 12 | Technical Paper, Reproducibility, and Defense Preparation | (pending) |
 
-## Development Roadmap
+Stages 03-12 are roadmap targets, not approved implementation contracts. Define
+and review each stage specification before implementation. The detailed roadmap
+is available in [Project Roadmap](docs/PROJECT_ROADMAP.md).
 
-### Stage 1: Problem Definition
-
-- Document the network inputs, outputs, objective, and constraints.
-- Define a small example with known feasible and optimal solutions.
-
-### Stage 2: Maximum-Flow Foundations
-
-- Implement residual networks, forward/reverse edges, and flow updates.
-- Implement Ford-Fulkerson and Edmonds-Karp.
-- Test capacity constraints, flow conservation, rerouting, and maximum-flow/minimum-cut agreement.
-
-These methods solve maximum flow. They do **not** count toward the assignment's two required classical minimum-cost-flow methods.
-
-### Later Milestones
-
-- **Minimum-cost flow:** Implement at least two classical methods and a simplified minimum-ratio-cycle-driven cycle-canceling method. Check correctness against a reference solver and compare runtime as the edge count grows.
-- **Theory:** Write a proof outline of Paper 1's reduction from minimum-cost flow to repeated minimum-ratio-cycle computations.
-- **Spatial queries:** Construct candidate links using PostGIS-backed spatial queries; compare with a grid or geohash baseline as the search radius changes.
-- **Geospatial learning:** Choose one representation technique to estimate demand or generation capacity. Compare against a simple baseline and evaluate the effect on routing cost and demand served.
-- **Integration and defense:** Combine the components, demonstrate rerouting after a generation-site outage, and report unmet demand when full service is infeasible.
-
-The cycle-based implementation demonstrates the underlying principle on small graphs. It does not reproduce the full almost-linear-time algorithm or inherit its runtime guarantee.
+Ford-Fulkerson and Edmonds-Karp solve maximum flow; they do **not** count as the
+assignment's two required classical minimum-cost-flow methods.
 
 ## Planned Structure
 
